@@ -31,6 +31,7 @@
 <script>
 import { BIconGithub } from "bootstrap-vue";
 import { LANGUAGES } from "../assets/data";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "NavBar",
@@ -43,16 +44,18 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["getLanguage"]),
     currentLang: {
       get() {
-        return this.$store.getters.getLanguage;
+        return this.getLanguage;
       },
       set(newValue) {
-        this.$store.commit("setLanguage", newValue);
+        this.setLanguage(newValue);
       },
     },
   },
   methods: {
+    ...mapMutations(["setLanguage"]),
     changeLanguage(language) {
       this.currentLang = language;
     },
