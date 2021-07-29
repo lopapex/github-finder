@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="search-bar">
     <b-button variant="danger">Button</b-button>
     <b-button variant="success">Button</b-button>
     <b-button variant="primary">Button</b-button>
@@ -8,13 +8,9 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  name: "SearchBar",
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 </style>

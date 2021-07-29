@@ -1,0 +1,10 @@
+{
+    "navbar": {
+        "home": "Domů",
+        "about": "O aplikaci",
+        "languages": {
+            "cz": "Čeština",
+            "en": "Angličtina"
+        }
+    }
+}
