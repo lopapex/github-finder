@@ -20,7 +20,6 @@
             v-for="(lang, index) in languages"
             :key="index"
             @click="changeLanguage(lang)"
-            href="#"
             >{{ $t(lang.long) }}</b-dropdown-item
           >
         </b-nav-item-dropdown>
@@ -41,17 +40,20 @@ export default {
   data() {
     return {
       languages: LANGUAGES,
-      currentLang: {},
     };
   },
-  mounted() {
-    this.currentLang = this.languages.find(
-      (lang) => lang.short == this.$i18n.locale
-    );
+  computed: {
+    currentLang: {
+      get() {
+        return this.$store.getters.getLanguage;
+      },
+      set(newValue) {
+        this.$store.commit("setLanguage", newValue);
+      },
+    },
   },
   methods: {
     changeLanguage(language) {
-      this.$i18n.locale = language.short;
       this.currentLang = language;
     },
   },
