@@ -15,12 +15,12 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown :text="$t(currentLang.long)" right>
+        <b-nav-item-dropdown :text="$t(currentLanguageLong)" right>
           <b-dropdown-item
-            v-for="(lang, index) in languages"
+            v-for="(language, index) in languages"
             :key="index"
-            @click="changeLanguage(lang)"
-            >{{ $t(lang.long) }}</b-dropdown-item
+            @click="changeLanguage(language.short)"
+            >{{ $t(language.long) }}</b-dropdown-item
           >
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getLanguage"]),
-    currentLang: {
+    currentLanguage: {
       get() {
         return this.getLanguage;
       },
@@ -53,11 +53,16 @@ export default {
         this.setLanguage(newValue);
       },
     },
+    currentLanguageLong() {
+      return this.languages.find(
+        (language) => language.short == this.currentLanguage
+      ).long;
+    },
   },
   methods: {
     ...mapMutations(["setLanguage"]),
     changeLanguage(language) {
-      this.currentLang = language;
+      this.currentLanguage = language;
     },
   },
 };

@@ -21,8 +21,6 @@ function loadLocaleMessages() {
 }
 
 export default new VueI18n({
-  locale: JSON.parse(localStorage.getItem("lang"))
-    ? JSON.parse(localStorage.getItem("lang")).short
-    : "en",
+  locale: localStorage.getItem("language") || "en",
   messages: loadLocaleMessages(),
 });
