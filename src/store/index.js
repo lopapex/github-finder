@@ -28,7 +28,11 @@ export default new Vuex.Store({
       commit("setSearchText", name);
       const downloadDebounce = _.debounce(async () => {
         await axios
-          .get(API_USERS_PREFIX + name + API_USERS_POSTFIX)
+          .get(API_USERS_PREFIX + name + API_USERS_POSTFIX, {
+            headers: {
+              Authorization: "token " + process.env.VUE_APP_API_KEY, //the token is a variable which holds the token
+            },
+          })
           .then(({ data }) => {
             console.log(data.items);
           })
