@@ -6,5 +6,8 @@
       "cz": "Czech",
       "en": "English"
     }
+  },
+  "home": {
+    "username": "Username"
   }
 }

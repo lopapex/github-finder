@@ -1,5 +1,5 @@
 <template>
-  <b-navbar type="dark" toggleable="sm" variant="dark">
+  <b-navbar type="dark" toggleable="sm" variant="secondary">
     <b-navbar-brand href="/">
       <BIconGithub />
       Github Finder
