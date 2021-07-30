@@ -1,9 +1,11 @@
 // Your variable overrides
-// $body-bg: #000;
+$body-bg: #e08e45;
 // $body-color: #111;
 
 $theme-colors: (
-  "dark": #161b22,
+  "primary": #f8f4a6,
+  "secondary": #6b2737,
+  "light": rgb(162, 141, 155),
 );
 
 // Bootstrap and its default variables
