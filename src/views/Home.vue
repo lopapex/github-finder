@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -27,12 +27,12 @@ export default {
         return this.getSearchText;
       },
       set(newValue) {
-        this.setSearchText(newValue);
+        this.downloadUsers(newValue);
       },
     },
   },
   methods: {
-    ...mapMutations(["setSearchText"]),
+    ...mapActions(["downloadUsers"]),
   },
 };
 </script>
