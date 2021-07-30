@@ -25,7 +25,8 @@ export default new Vuex.Store({
   },
   actions: {
     async downloadUsers({ commit }, name) {
-      const download = _.debounce(async () => {
+      commit("setSearchText", name);
+      const downloadDebounce = _.debounce(async () => {
         await axios
           .get(API_USERS_PREFIX + name + API_USERS_POSTFIX)
           .then(({ data }) => {
@@ -35,8 +36,7 @@ export default new Vuex.Store({
             console.log(error.response.data.message);
           });
       }, 100);
-      commit("setSearchText", name);
-      download();
+      downloadDebounce();
     },
   },
   getters: {
