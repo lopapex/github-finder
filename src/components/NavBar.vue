@@ -1,6 +1,6 @@
 <template>
   <b-navbar type="dark" toggleable="sm" variant="secondary">
-    <b-navbar-brand route to="/">
+    <b-navbar-brand to="/">
       <BIconGithub />
       Github Finder
     </b-navbar-brand>
@@ -9,9 +9,9 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item route to="/">{{ $t("navbar.home") }}</b-nav-item>
+        <b-nav-item to="/">{{ $t("navbar.home") }}</b-nav-item>
 
-        <b-nav-item route to="/about">{{ $t("navbar.about") }}</b-nav-item>
+        <b-nav-item to="/about">{{ $t("navbar.about") }}</b-nav-item>
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
