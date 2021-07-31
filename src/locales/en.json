@@ -9,5 +9,8 @@
   },
   "search": {
     "username": "Username"
+  },
+  "card": {
+    "empty": "No username contains the entered text"
   }
 }

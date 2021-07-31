@@ -3,6 +3,11 @@ export const LANGUAGES = [
   { short: "cz", long: "navbar.languages.cz" },
 ];
 
+export const API_HEADER = {
+  headers: {
+    Authorization: "token " + process.env.VUE_APP_API_KEY, //the token is a variable which holds the token
+  },
+};
+
 export const API_USERS_PREFIX = "https://api.github.com/search/users?q=";
-export const USER_COUNT = 30;
-export const API_USERS_POSTFIX = ` in:user&per_page=${USER_COUNT}`;
+export const API_USERS_POSTFIX = " in:user";

@@ -3,7 +3,11 @@ import Vuex from "vuex";
 import i18n from "../i18n";
 import _ from "lodash";
 import axios from "axios";
-import { API_USERS_PREFIX, API_USERS_POSTFIX } from "../assets/data";
+import {
+  API_HEADER,
+  API_USERS_PREFIX,
+  API_USERS_POSTFIX,
+} from "../assets/data";
 
 Vue.use(Vuex);
 
@@ -11,6 +15,7 @@ export default new Vuex.Store({
   state: {
     language: i18n.locale,
     searchText: "",
+    users: [],
   },
   mutations: {
     setLanguage(state, newLanguage) {
@@ -22,22 +27,22 @@ export default new Vuex.Store({
     setSearchText(state, newText) {
       state.searchText = newText;
     },
+
+    setUsers(state, newUsers) {
+      state.users = state.searchText ? newUsers : [];
+    },
   },
   actions: {
     async downloadUsers({ commit }, name) {
       commit("setSearchText", name);
       const downloadDebounce = _.debounce(async () => {
         await axios
-          .get(API_USERS_PREFIX + name + API_USERS_POSTFIX, {
-            headers: {
-              Authorization: "token " + process.env.VUE_APP_API_KEY, //the token is a variable which holds the token
-            },
-          })
+          .get(API_USERS_PREFIX + name + API_USERS_POSTFIX, API_HEADER)
           .then(({ data }) => {
-            console.log(data.items);
+            commit("setUsers", data.items);
           })
           .catch((error) => {
-            console.log(error.response.data.message);
+            alert(error.response.data.message);
           });
       }, 100);
       downloadDebounce();
@@ -50,6 +55,10 @@ export default new Vuex.Store({
 
     getSearchText(state) {
       return state.searchText;
+    },
+
+    getUsers(state) {
+      return state.users;
     },
   },
 });

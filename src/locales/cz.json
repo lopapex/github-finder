@@ -9,5 +9,8 @@
     },
     "search": {
         "username": "Uživatelské jméno"
+    },
+    "card": {
+        "empty": "Žádné uživatelské jméno neobsahuje zadaný text"
     }
 }
