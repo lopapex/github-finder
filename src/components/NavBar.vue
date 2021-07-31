@@ -20,8 +20,9 @@
             v-for="(language, index) in languages"
             :key="index"
             @click="changeLanguage(language.short)"
-            >{{ $t(language.long) }}</b-dropdown-item
           >
+            {{ $t(language.long) }}
+          </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

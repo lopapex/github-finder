@@ -2,9 +2,9 @@
   <div class="search">
     <b-input-group class="p-5">
       <template #prepend>
-        <b-input-group-text class="prepend-text bg-primary text-light"
-          >@</b-input-group-text
-        >
+        <b-input-group-text class="prepend-text bg-primary text-light">
+          @
+        </b-input-group-text>
       </template>
       <b-form-input
         :placeholder="$t('search.username')"

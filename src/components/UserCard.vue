@@ -4,9 +4,9 @@
     :bg-variant="isHovered ? 'secondary' : 'primary'"
     class="my-3"
   >
-    <b-card-title
-      ><b-avatar :src="user.avatar_url" size="6rem"></b-avatar
-    ></b-card-title>
+    <b-card-title>
+      <b-avatar :src="user.avatar_url" size="6rem"></b-avatar>
+    </b-card-title>
     <b-card-text class="text-light">
       <strong>{{ user.login }}</strong>
     </b-card-text>
