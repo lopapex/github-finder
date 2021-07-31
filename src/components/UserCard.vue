@@ -1,5 +1,6 @@
 <template>
   <b-card
+    @click="viewDetail"
     v-b-hover="handleHover"
     :bg-variant="isHovered ? 'secondary' : 'primary'"
     class="my-3"
@@ -30,6 +31,10 @@ export default {
   methods: {
     handleHover(hovered) {
       this.isHovered = hovered;
+    },
+
+    viewDetail() {
+      this.$router.push("/users/" + this.user.id);
     },
   },
 };
