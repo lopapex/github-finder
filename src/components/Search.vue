@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <b-input-group class="p-5">
+    <b-input-group class="p-3">
       <template #prepend>
         <b-input-group-text class="prepend-text bg-primary text-light">
           @

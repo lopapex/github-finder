@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="p-3">
     <UserDetailCard v-if="!loading" />
     <div v-else class="d-flex justify-content-center mb-3">
       <b-spinner variant="secondary" label="Loading..."></b-spinner>

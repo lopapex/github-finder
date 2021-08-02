@@ -2,7 +2,7 @@
   <div class="user-detail-card text-light">
     <b-card bg-variant="primary" no-body class="overflow-hidden">
       <b-row no-gutters>
-        <b-col sm="4">
+        <b-col md="3">
           <b-card-img
             :src="user.avatar_url"
             alt="Image"
@@ -18,7 +18,7 @@
             {{ $t("userDetails.viewProfile") }}
           </b-button>
         </b-col>
-        <b-col sm="8">
+        <b-col md="9">
           <b-card-body>
             <h2>{{ user.login }}</h2>
             <div class="info text-left">
