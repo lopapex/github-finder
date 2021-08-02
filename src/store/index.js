@@ -1,7 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import i18n from "../i18n";
-import { downloadDebounce, getUserDetails } from "../assets/utils";
+import {
+  downloadDebounce,
+  getUserDetails,
+  getRepositories,
+} from "../assets/utils";
 
 Vue.use(Vuex);
 
@@ -11,6 +15,7 @@ export default new Vuex.Store({
     searchText: "",
     users: [],
     selectedUser: {},
+    repositories: [],
   },
   mutations: {
     setLanguage(state, newLanguage) {
@@ -30,6 +35,10 @@ export default new Vuex.Store({
     setSelectedUser(state, newSelectedUser) {
       state.selectedUser = newSelectedUser;
     },
+
+    setRepositories(state, newRepositories) {
+      state.repositories = newRepositories;
+    },
   },
   actions: {
     async getUsers({ commit }, name) {
@@ -39,6 +48,10 @@ export default new Vuex.Store({
 
     async getUserDetails({ commit }, name) {
       getUserDetails(commit, name);
+    },
+
+    async getRepositoriesAPI({ commit }, { name, page }) {
+      getRepositories(commit, name, page);
     },
   },
   getters: {
@@ -56,6 +69,10 @@ export default new Vuex.Store({
 
     getSelectedUser(state) {
       return state.selectedUser;
+    },
+
+    getRepositories(state) {
+      return state.repositories;
     },
   },
 });

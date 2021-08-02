@@ -23,5 +23,8 @@
     "publicRepos": "Public Repos: {n}",
     "publicGists": "Public Gists: {n}",
     "viewProfile": "View Profile"
+  },
+  "repositories": {
+    "link": "Github"
   }
 }
