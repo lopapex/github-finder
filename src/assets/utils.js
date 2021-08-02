@@ -35,6 +35,7 @@ export const getRepositories = async (commit, name, page) => {
     .get(API_USERS + name + API_REPO + page, API_HEADER)
     .then(({ data }) => {
       commit("setRepositories", data);
+      return;
     })
     .catch((error) => {
       alert(error.response.data.message);

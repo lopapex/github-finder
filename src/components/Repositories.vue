@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { REPO_PER_PAGE } from "../assets/data";
 
 export default {
@@ -52,7 +52,12 @@ export default {
     return {
       perPage: REPO_PER_PAGE,
       currentPage: 1,
+      isBusy: true,
     };
+  },
+
+  mounted() {
+    this.updateRepositories();
   },
 
   computed: {
@@ -69,27 +74,28 @@ export default {
         link: repo.html_url,
       }));
     },
-    isBusy() {
-      return this.repositories.length <= 0;
-    },
   },
 
   watch: {
     currentPage(newPage) {
       this.currentPage = newPage;
-      this.setRepositories([]);
-      this.getRepositoriesAPI({
-        name: this.$route.params.login,
-        page: newPage,
-      });
+      this.updateRepositories();
     },
   },
 
   methods: {
     ...mapActions(["getRepositoriesAPI"]),
-    ...mapMutations(["setRepositories"]),
     viewRepo(url) {
       window.open(url, "_blank");
+    },
+    updateRepositories() {
+      this.isBusy = true;
+      this.getRepositoriesAPI({
+        name: this.$route.params.login,
+        page: this.currentPage,
+      }).then(() => {
+        this.isBusy = false;
+      });
     },
   },
 };

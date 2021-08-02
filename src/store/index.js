@@ -51,7 +51,7 @@ export default new Vuex.Store({
     },
 
     async getRepositoriesAPI({ commit }, { name, page }) {
-      getRepositories(commit, name, page);
+      return getRepositories(commit, name, page);
     },
   },
   getters: {
