@@ -1,20 +1,28 @@
 <template>
   <div class="user">
-    <h1>{{ user.login }}</h1>
+    <h1>{{ $route.params.login }}</h1>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "User",
 
+  mounted() {
+    this.getUserDetails(this.$route.params.login);
+  },
+
   computed: {
-    ...mapGetters(["getUsers"]),
+    ...mapGetters(["getSelectedUser"]),
     user() {
-      return this.getUsers.find((user) => user.id == this.$route.params.id);
+      return this.getSelectedUser;
     },
+  },
+
+  methods: {
+    ...mapActions(["getUserDetails"]),
   },
 };
 </script>

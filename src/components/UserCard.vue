@@ -34,7 +34,7 @@ export default {
     },
 
     viewDetail() {
-      this.$router.push("/users/" + this.user.id);
+      this.$router.push("/users/" + this.user.login);
     },
   },
 };

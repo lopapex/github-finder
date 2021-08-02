@@ -27,12 +27,12 @@ export default {
         return this.getSearchText;
       },
       set(newValue) {
-        this.downloadUsers(newValue);
+        this.getUsers(newValue);
       },
     },
   },
   methods: {
-    ...mapActions(["downloadUsers"]),
+    ...mapActions(["getUsers"]),
   },
 };
 </script>
