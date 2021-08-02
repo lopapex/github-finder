@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view />
+    <router-view class="content" />
   </div>
 </template>
 
@@ -21,5 +21,10 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
+}
+
+.content {
+  max-width: 1228px;
+  margin: auto;
 }
 </style>
