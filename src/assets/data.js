@@ -1,6 +1,6 @@
 export const LANGUAGES = [
   { short: "en", long: "navbar.languages.en" },
-  { short: "cz", long: "navbar.languages.cz" },
+  { short: "cs", long: "navbar.languages.cz" },
 ];
 
 export const API_HEADER = {

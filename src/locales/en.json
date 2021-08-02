@@ -12,5 +12,16 @@
   },
   "card": {
     "empty": "No username contains the entered text"
+  },
+  "userDetails": {
+    "company": "Company: {n}",
+    "blog": "Website / Blog: {n}",
+    "location": "Location: {n}",
+    "memberSince": "Member since: {n}",
+    "followers": "Followers: {n}",
+    "following": "Following: {n}",
+    "publicRepos": "Public Repos: {n}",
+    "publicGists": "Public Gists: {n}",
+    "viewProfile": "View Profile"
   }
 }

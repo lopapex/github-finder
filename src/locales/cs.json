@@ -1,0 +1,27 @@
+{
+    "navbar": {
+        "home": "Domů",
+        "about": "O aplikaci",
+        "languages": {
+            "cz": "Čeština",
+            "en": "Angličtina"
+        }
+    },
+    "search": {
+        "username": "Uživatelské jméno"
+    },
+    "card": {
+        "empty": "Žádné uživatelské jméno neobsahuje zadaný text"
+    },
+    "userDetails": {
+        "company": "Společnost: {n}",
+        "blog": "Web / blog: {n}",
+        "location": "Poloha: {n}",
+        "memberSince": "Členem od: {n}",
+        "followers": "Sledující: {n}",
+        "following": "Sleduje: {n}",
+        "publicRepos": "Public Repos: {n}",
+        "publicGists": "Public Gists: {n}",
+        "viewProfile": "Zobrazit Profil"
+    }
+}
