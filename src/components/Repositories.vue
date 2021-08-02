@@ -21,10 +21,7 @@
       no-border-collapse
     >
       <template #table-busy>
-        <div class="text-center text-secondary my-2">
-          <b-spinner class="align-middle"></b-spinner>
-          <strong>Loading...</strong>
-        </div>
+        <Loading class="my-2" />
       </template>
       <template #cell(link)="data">
         <b-button
@@ -45,9 +42,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { REPO_PER_PAGE } from "../assets/data";
+import Loading from "./Loading.vue";
 
 export default {
   name: "User",
+  components: {
+    Loading,
+  },
   data() {
     return {
       perPage: REPO_PER_PAGE,

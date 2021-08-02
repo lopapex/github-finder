@@ -4,15 +4,14 @@
       <UserDetailCard />
       <Repositories />
     </div>
-    <div v-else class="d-flex justify-content-center mb-3">
-      <b-spinner variant="secondary" label="Loading..."></b-spinner>
-    </div>
+    <Loading v-else class="mb-3" />
   </div>
 </template>
 
 <script>
 import UserDetailCard from "../components/UserDetailCard.vue";
 import Repositories from "../components/Repositories.vue";
+import Loading from "../components/Loading.vue";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 import _ from "lodash";
 
@@ -21,25 +20,21 @@ export default {
   components: {
     UserDetailCard,
     Repositories,
+    Loading,
   },
 
   mounted() {
     this.getUserDetails(this.$route.params.login);
-    this.getRepositoriesAPI({ name: this.$route.params.login, page: 1 });
   },
 
   beforeDestroy() {
     this.setSelectedUser({});
-    this.setRepositories([]);
   },
 
   computed: {
-    ...mapGetters(["getSelectedUser", "getRepositories"]),
+    ...mapGetters(["getSelectedUser"]),
     user() {
       return this.getSelectedUser;
-    },
-    repositories() {
-      return this.getRepositories;
     },
     loading() {
       return _.isEmpty(this.user);
@@ -47,8 +42,8 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setSelectedUser", "setRepositories"]),
-    ...mapActions(["getUserDetails", "getRepositoriesAPI"]),
+    ...mapMutations(["setSelectedUser"]),
+    ...mapActions(["getUserDetails"]),
   },
 };
 </script>
