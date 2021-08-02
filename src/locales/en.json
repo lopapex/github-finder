@@ -25,6 +25,8 @@
     "viewProfile": "View Profile"
   },
   "repositories": {
-    "link": "Github"
+    "link": "Github",
+    "title": "Repositories:",
+    "empty": "{n} has no public repositories"
   }
 }

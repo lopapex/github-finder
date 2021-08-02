@@ -9,12 +9,8 @@
         </b-row>
       </b-container>
     </div>
-    <div v-else>
-      <b-card bg-variant="primary" class="mx-5">
-        <b-card-text class="text-light">
-          {{ $t("card.empty") }}
-        </b-card-text>
-      </b-card>
+    <div v-else class="m-3">
+      <ErrorCard :message="$t('card.empty')" />
     </div>
   </div>
 </template>
@@ -22,11 +18,13 @@
 <script>
 import { mapGetters } from "vuex";
 import UserCard from "./UserCard.vue";
+import ErrorCard from "./ErrorCard.vue";
 
 export default {
   name: "UserCardList",
   components: {
     UserCard,
+    ErrorCard,
   },
   computed: {
     ...mapGetters(["getUsers", "getSearchText"]),

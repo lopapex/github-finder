@@ -1,11 +1,16 @@
 <template>
   <div class="overflow-auto">
-    <h2 class="mt-5">Repositories:</h2>
+    <h2 class="mt-3">{{ $t("repositories.title") }}</h2>
+
+    <ErrorCard
+      v-if="repositories.length == 0 && !isBusy"
+      :message="$tc('repositories.empty', user.login)"
+    />
 
     <b-pagination
-      v-if="perPage < rows"
+      v-if="perPage < user.public_repos"
       v-model="currentPage"
-      :total-rows="rows"
+      :total-rows="user.public_repos"
       :per-page="perPage"
       pills
       align="fill"
@@ -43,11 +48,13 @@
 import { mapGetters, mapActions } from "vuex";
 import { REPO_PER_PAGE } from "../assets/data";
 import Loading from "./Loading.vue";
+import ErrorCard from "./ErrorCard.vue";
 
 export default {
   name: "User",
   components: {
     Loading,
+    ErrorCard,
   },
   data() {
     return {
@@ -63,8 +70,8 @@ export default {
 
   computed: {
     ...mapGetters(["getSelectedUser", "getRepositories"]),
-    rows() {
-      return this.getSelectedUser.public_repos;
+    user() {
+      return this.getSelectedUser;
     },
     repositories() {
       return this.getRepositories;

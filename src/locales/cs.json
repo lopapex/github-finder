@@ -25,6 +25,8 @@
         "viewProfile": "Zobrazit Profil"
     },
     "repositories": {
-        "link": "Github"
+        "link": "Github",
+        "title": "Repozitáře:",
+        "empty": "{n} nemá žádné veřejné repozitáře"
     }
 }
