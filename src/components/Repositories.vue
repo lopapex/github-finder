@@ -24,7 +24,9 @@
       small
       hover
       no-border-collapse
+      @row-clicked="showModal"
     >
+      >
       <template #table-busy>
         <Loading class="my-2" />
       </template>
@@ -41,6 +43,7 @@
         </b-button>
       </template>
     </b-table>
+    <BranchesModal :repository="currentRepository" ref="branchesModal" />
   </div>
 </template>
 
@@ -49,18 +52,21 @@ import { mapGetters, mapActions } from "vuex";
 import { REPO_PER_PAGE } from "../assets/data";
 import Loading from "./Loading.vue";
 import ErrorCard from "./ErrorCard.vue";
+import BranchesModal from "./BranchesModal.vue";
 
 export default {
   name: "User",
   components: {
     Loading,
     ErrorCard,
+    BranchesModal,
   },
   data() {
     return {
       perPage: REPO_PER_PAGE,
       currentPage: 1,
       isBusy: true,
+      currentRepository: "",
     };
   },
 
@@ -104,6 +110,11 @@ export default {
       }).then(() => {
         this.isBusy = false;
       });
+    },
+    showModal({ name }) {
+      console.log(name);
+      this.currentRepository = name;
+      this.$refs.branchesModal.show();
     },
   },
 };
