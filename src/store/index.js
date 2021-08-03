@@ -5,6 +5,7 @@ import {
   downloadDebounce,
   getUserDetails,
   getRepositories,
+  getBranches,
 } from "../assets/utils";
 
 Vue.use(Vuex);
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     users: [],
     selectedUser: {},
     repositories: [],
+    branches: [],
   },
   mutations: {
     setLanguage(state, newLanguage) {
@@ -39,19 +41,27 @@ export default new Vuex.Store({
     setRepositories(state, newRepositories) {
       state.repositories = newRepositories;
     },
+
+    setBranches(state, newBranches) {
+      state.branches = newBranches;
+    },
   },
   actions: {
     async getUsers({ commit }, name) {
       commit("setSearchText", name);
-      downloadDebounce(commit, name);
+      return downloadDebounce(commit, name);
     },
 
     async getUserDetails({ commit }, name) {
-      getUserDetails(commit, name);
+      return getUserDetails(commit, name);
     },
 
     async getRepositoriesAPI({ commit }, { name, page }) {
       return getRepositories(commit, name, page);
+    },
+
+    async getBranchesAPI({ commit }, { name, repository }) {
+      return getBranches(commit, name, repository);
     },
   },
   getters: {
@@ -73,6 +83,10 @@ export default new Vuex.Store({
 
     getRepositories(state) {
       return state.repositories;
+    },
+
+    getBranches(state) {
+      return state.branches;
     },
   },
 });

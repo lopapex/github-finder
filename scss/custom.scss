@@ -1,7 +1,8 @@
 // Your variable overrides
 $body-bg: #e08e45;
-$pagination-active-bg: #6b2737;
-$pagination-active-color: rgb(162, 141, 155);
+$pagination-active-bg: var(--secondary);
+$pagination-active-color: var(--light);
+$dropdown-link-active-bg: var(--secondary);
 // $body-color: #111;
 
 $theme-colors: (

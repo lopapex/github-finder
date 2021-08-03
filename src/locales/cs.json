@@ -28,5 +28,9 @@
         "link": "Github",
         "title": "Repozitáře:",
         "empty": "{n} nemá žádné veřejné repozitáře"
+    },
+    "branches": {
+        "loading": "Načítání...",
+        "close": "Zavřít"
     }
 }

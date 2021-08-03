@@ -28,5 +28,9 @@
     "link": "Github",
     "title": "Repositories:",
     "empty": "{n} has no public repositories"
+  },
+  "branches": {
+    "loading": "Loading...",
+    "close": "Close"
   }
 }

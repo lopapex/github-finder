@@ -112,9 +112,8 @@ export default {
       });
     },
     showModal({ name }) {
-      console.log(name);
       this.currentRepository = name;
-      this.$refs.branchesModal.show();
+      this.$refs.branchesModal.show(name);
     },
   },
 };
