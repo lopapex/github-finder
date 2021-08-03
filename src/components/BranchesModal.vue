@@ -18,7 +18,7 @@
       >
     </b-table>
     <template #modal-footer="{ ok }">
-      <b-button block squared variant="secondary" @click="ok()">
+      <b-button block squared variant="secondary" @click="closeModal(ok)">
         {{ $t("branches.close") }}
       </b-button>
     </template>
@@ -73,6 +73,11 @@ export default {
       this.repository = repository;
       this.$refs.modal.show();
       this.updateBranches();
+    },
+
+    closeModal(ok) {
+      ok();
+      this.selected = MASTER_BRANCH;
     },
 
     branchChange() {
