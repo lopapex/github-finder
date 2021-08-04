@@ -11,6 +11,7 @@
       thead-class="hidden_header"
       :items="items"
       :busy="isBusy"
+      @row-clicked="showDetails"
       class="mt-3"
       small
       hover
@@ -105,7 +106,6 @@ export default {
 
     updateCommits() {
       this.isBusy = true;
-      console.log("");
       this.getCommitsAPI({
         name: this.user.login,
         repository: this.repository,
@@ -113,6 +113,11 @@ export default {
       }).then(() => {
         this.isBusy = false;
       });
+    },
+
+    showDetails({ name }) {
+      let commit = this.commits.find((commit) => commit.commit.message == name);
+      window.open(commit.html_url, "_blank");
     },
   },
 };

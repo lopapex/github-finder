@@ -73,7 +73,6 @@ export const getCommits = async (commit, name, repository, branch) => {
       API_HEADER
     )
     .then(({ data }) => {
-      console.log(data);
       commit("setCommits", data);
       return;
     })
