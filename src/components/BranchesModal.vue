@@ -90,6 +90,10 @@ export default {
         name: this.user.login,
         repository: this.repository,
       }).then(() => {
+        // if master branch does not exist
+        if (!this.branches.find((branch) => branch.name == MASTER_BRANCH)) {
+          this.selected = this.branches[0].name;
+        }
         this.selectLoading = false;
       });
     },
