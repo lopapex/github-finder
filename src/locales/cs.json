@@ -32,5 +32,11 @@
     "branches": {
         "loading": "Načítání...",
         "close": "Zavřít"
+    },
+    "about": {
+        "title": "O aplikaci",
+        "text": "Aplikace pro vyhledávání uživatelů Githubu, jejich repozitářů a jejích commitů.",
+        "info": "<b>autor:</b> Matěj Novotný<br /><b>verze:</b> {version}<br /><b>licence:</b> MIT<br />",
+        "repo": "repořitář:"
     }
 }

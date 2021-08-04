@@ -32,5 +32,11 @@
   "branches": {
     "loading": "Loading...",
     "close": "Close"
+  },
+  "about": {
+    "title": "About app",
+    "text": "Application to search Github users, their repositories and its commits.",
+    "info": "<b>author:</b> Matěj Novotný<br /><b>version:</b> {version}<br /><b>license:</b> MIT<br />",
+    "repo": "repository:"
   }
 }

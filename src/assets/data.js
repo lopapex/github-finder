@@ -22,3 +22,5 @@ export const COMMIT_PER_PAGE = 10;
 export const API_REPO_COMMIT = `/commits?sha=`;
 export const API_REPO_COMMIT_PAGE = `&per_page=${COMMIT_PER_PAGE}`;
 export const MASTER_BRANCH = `master`;
+
+export const REPO_URL = `https://github.com/lopapex/github-finder`;
