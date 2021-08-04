@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { MASTER_BRANCH } from "../assets/data";
 import Loading from "./Loading.vue";
 
@@ -78,9 +78,7 @@ export default {
 
   methods: {
     ...mapActions(["getBranchesAPI", "getCommitsAPI"]),
-    ...mapMutations(["setCommits"]),
     show(repository) {
-      this.setCommits([]);
       this.selectedBranch = MASTER_BRANCH;
       this.repository = repository;
       this.$refs.modal.show();
