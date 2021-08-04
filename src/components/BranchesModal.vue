@@ -10,7 +10,7 @@
     <b-table
       thead-class="hidden_header"
       :items="items"
-      :busy="isBusy"
+      :busy="isBusy || selectLoading"
       @row-clicked="showDetails"
       class="mt-3"
       small
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 import { MASTER_BRANCH } from "../assets/data";
 import Loading from "./Loading.vue";
 
@@ -78,7 +78,9 @@ export default {
 
   methods: {
     ...mapActions(["getBranchesAPI", "getCommitsAPI"]),
+    ...mapMutations(["setCommits"]),
     show(repository) {
+      this.setCommits([]);
       this.selectedBranch = MASTER_BRANCH;
       this.repository = repository;
       this.$refs.modal.show();
