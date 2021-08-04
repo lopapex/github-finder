@@ -18,4 +18,7 @@ export const REPO_PER_PAGE = 30;
 export const API_USER_REPO = `/repos?per_page=${REPO_PER_PAGE}&page=`;
 export const API_REPO = `${API_URL}/repos/`;
 export const API_REPO_BRANCH = `/branches`;
+export const COMMIT_PER_PAGE = 10;
+export const API_REPO_COMMIT = `/commits?sha=`;
+export const API_REPO_COMMIT_PAGE = `&per_page=${COMMIT_PER_PAGE}`;
 export const MASTER_BRANCH = `master`;

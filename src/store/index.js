@@ -6,6 +6,7 @@ import {
   getUserDetails,
   getRepositories,
   getBranches,
+  getCommits,
 } from "../assets/utils";
 
 Vue.use(Vuex);
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     selectedUser: {},
     repositories: [],
     branches: [],
+    commits: [],
   },
   mutations: {
     setLanguage(state, newLanguage) {
@@ -45,6 +47,10 @@ export default new Vuex.Store({
     setBranches(state, newBranches) {
       state.branches = newBranches;
     },
+
+    setCommits(state, newCommits) {
+      state.commits = newCommits;
+    },
   },
   actions: {
     async getUsers({ commit }, name) {
@@ -62,6 +68,10 @@ export default new Vuex.Store({
 
     async getBranchesAPI({ commit }, { name, repository }) {
       return getBranches(commit, name, repository);
+    },
+
+    async getCommitsAPI({ commit }, { name, repository, branch }) {
+      return getCommits(commit, name, repository, branch);
     },
   },
   getters: {
@@ -87,6 +97,10 @@ export default new Vuex.Store({
 
     getBranches(state) {
       return state.branches;
+    },
+
+    getCommits(state) {
+      return state.commits;
     },
   },
 });

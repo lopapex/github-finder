@@ -26,7 +26,6 @@
       no-border-collapse
       @row-clicked="showModal"
     >
-      >
       <template #table-busy>
         <Loading class="my-2" />
       </template>

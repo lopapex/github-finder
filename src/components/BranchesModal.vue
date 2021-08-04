@@ -2,7 +2,7 @@
   <b-modal id="modal" ref="modal" :title="repository" ok-only centered>
     <b-form-select
       class="select"
-      v-model="selected"
+      v-model="selectedBranch"
       :options="options"
       @change="branchChange"
     ></b-form-select>
@@ -10,15 +10,19 @@
     <b-table
       thead-class="hidden_header"
       :items="items"
+      :busy="isBusy"
       class="mt-3"
       small
       hover
       no-border-collapse
     >
-      >
+      <template #table-busy>
+        <Loading class="my-2" />
+      </template>
     </b-table>
+
     <template #modal-footer="{ ok }">
-      <b-button block squared variant="secondary" @click="closeModal(ok)">
+      <b-button block squared variant="secondary" @click="ok()">
         {{ $t("branches.close") }}
       </b-button>
     </template>
@@ -28,21 +32,25 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { MASTER_BRANCH } from "../assets/data";
+import Loading from "./Loading.vue";
 
-//TODO IS_BUSY
 export default {
   name: "BranchesModal",
+  components: {
+    Loading,
+  },
 
   data() {
     return {
       selectLoading: true,
+      isBusy: true,
       repository: "",
-      selected: MASTER_BRANCH,
+      selectedBranch: MASTER_BRANCH,
     };
   },
 
   computed: {
-    ...mapGetters(["getSelectedUser", "getBranches", "getRepositories"]),
+    ...mapGetters(["getSelectedUser", "getBranches", "getCommits"]),
     user() {
       return this.getSelectedUser;
     },
@@ -57,31 +65,27 @@ export default {
             value: branch.name,
           }));
     },
-    repositories() {
-      return this.getRepositories;
+    commits() {
+      return this.getCommits;
     },
     items() {
-      return this.repositories.map((repo) => ({
-        name: repo.name,
+      return this.getCommits.map((commit) => ({
+        name: commit.commit.message,
       }));
     },
   },
 
   methods: {
-    ...mapActions(["getBranchesAPI"]),
+    ...mapActions(["getBranchesAPI", "getCommitsAPI"]),
     show(repository) {
+      this.selectedBranch = MASTER_BRANCH;
       this.repository = repository;
       this.$refs.modal.show();
       this.updateBranches();
     },
 
-    closeModal(ok) {
-      ok();
-      this.selected = MASTER_BRANCH;
-    },
-
     branchChange() {
-      console.log(this.selected);
+      this.updateCommits();
     },
 
     updateBranches() {
@@ -92,9 +96,22 @@ export default {
       }).then(() => {
         // if master branch does not exist
         if (!this.branches.find((branch) => branch.name == MASTER_BRANCH)) {
-          this.selected = this.branches[0].name;
+          this.selectedBranch = this.branches[0].name;
         }
+        this.updateCommits();
         this.selectLoading = false;
+      });
+    },
+
+    updateCommits() {
+      this.isBusy = true;
+      console.log("");
+      this.getCommitsAPI({
+        name: this.user.login,
+        repository: this.repository,
+        branch: this.selectedBranch,
+      }).then(() => {
+        this.isBusy = false;
       });
     },
   },

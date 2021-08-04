@@ -8,6 +8,8 @@ import {
   API_USER_REPO,
   API_REPO,
   API_REPO_BRANCH,
+  API_REPO_COMMIT,
+  API_REPO_COMMIT_PAGE,
 } from "./data";
 
 export const downloadDebounce = _.debounce(async (commit, name) => {
@@ -51,6 +53,28 @@ export const getBranches = async (commit, name, repository) => {
     .get(API_REPO + name + "/" + repository + API_REPO_BRANCH, API_HEADER)
     .then(({ data }) => {
       commit("setBranches", data);
+      return;
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
+};
+
+export const getCommits = async (commit, name, repository, branch) => {
+  await axios
+    .get(
+      API_REPO +
+        name +
+        "/" +
+        repository +
+        API_REPO_COMMIT +
+        branch +
+        API_REPO_COMMIT_PAGE,
+      API_HEADER
+    )
+    .then(({ data }) => {
+      console.log(data);
+      commit("setCommits", data);
       return;
     })
     .catch((error) => {
