@@ -3,11 +3,7 @@
     <b-card bg-variant="primary" no-body class="overflow-hidden">
       <b-row no-gutters>
         <b-col md="3">
-          <b-card-img
-            :src="user.avatar_url"
-            alt="Image"
-            class="rounded-0"
-          ></b-card-img>
+          <b-card-img :src="user.avatar_url" class="rounded-0"></b-card-img>
           <b-button
             class="mt-auto"
             @click="viewProfile"
